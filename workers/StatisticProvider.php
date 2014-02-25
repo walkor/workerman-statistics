@@ -191,7 +191,74 @@ class StatisticProvider extends Man\Core\SocketWorker
         }
         // log文件
         $log_file = WORKERMAN_LOG_DIR . $this->statisticDir."{$module}/{$interface}|{$date}";
-        return @file_get_contents($log_file);
+        
+        $handle = @fopen($log_file, 'r');
+        if(!$handle)
+        {
+            return '';
+        }
+        
+        // 预处理统计数据，每5分钟一行
+        // [time=>[ip=>['suc_count'=>xx, 'suc_cost_time'=>xx, 'fail_count'=>xx, 'fail_cost_time'=>xx, 'code_map'=>[code=>count, ..], ..], ..]
+        $statistics_data = array();
+        while(!feof($handle))
+        {
+            $line = fgets($handle, 4096);
+            if($line)
+            {
+                $explode = explode("\t", $line);
+                if(count($explode) < 7)
+                {
+                    continue;
+                }
+                list($ip, $time, $suc_count, $suc_cost_time, $fail_count, $fail_cost_time, $code_map) = $explode;
+                $time = ceil($time/300)*300;
+                if(!isset($statistics_data[$time]))
+                {
+                    $statistics_data[$time] = array();
+                }
+                if(!isset($statistics_data[$time][$ip]))
+                {
+                    $statistics_data[$time][$ip] = array(
+                            'suc_count'       =>0,
+                            'suc_cost_time' =>0,
+                            'fail_count'       =>0,
+                            'fail_cost_time' =>0,
+                            'code_map'      =>array(),
+                     );
+                }
+                $statistics_data[$time][$ip]['suc_count'] += $suc_count;
+                $statistics_data[$time][$ip]['suc_cost_time'] += round($suc_cost_time, 5);
+                $statistics_data[$time][$ip]['fail_count'] += $fail_count;
+                $statistics_data[$time][$ip]['fail_cost_time'] += round($fail_cost_time, 5);
+                $code_map = json_decode(trim($code_map), true);
+                if($code_map && is_array($code_map))
+                {
+                    foreach($code_map as $code=>$count)
+                    {
+                        if(!isset($statistics_data[$time][$ip]['code_map'][$code]))
+                        {
+                            $statistics_data[$time][$ip]['code_map'][$code] = 0;
+                        }
+                        $statistics_data[$time][$ip]['code_map'][$code] +=$count;
+                    }
+                }
+            } // end if
+        } // end while
+        
+        fclose($handle);
+        ksort($statistics_data);
+        
+        // 整理数据
+        $statistics_str = '';
+        foreach($statistics_data as $time => $items)
+        {
+            foreach($items as $ip => $item)
+            {
+                $statistics_str .= "$ip\t$time\t{$item['suc_count']}\t{$item['suc_cost_time']}\t{$item['fail_count']}\t{$item['fail_cost_time']}\t".json_encode($item['code_map'])."\n";
+            }
+        }
+        return $statistics_str;
     }
     
     
