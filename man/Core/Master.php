@@ -4,6 +4,7 @@ require_once WORKERMAN_ROOT_DIR . 'man/Core/Lib/Checker.php';
 require_once WORKERMAN_ROOT_DIR . 'man/Core/Lib/Config.php';
 require_once WORKERMAN_ROOT_DIR . 'man/Core/Lib/Task.php';
 require_once WORKERMAN_ROOT_DIR . 'man/Core/Lib/Log.php';
+require_once WORKERMAN_ROOT_DIR . 'man/Core/Lib/Mutex.php';
 
 if(!defined('WORKERMAN_ROOT_DIR'))
 {
@@ -151,7 +152,7 @@ class Master
     public static function run()
     {
         // 输出信息
-        self::notice("Server is starting ...", true);
+        self::notice("Workerman is starting ...", true);
         // 初始化
         self::init();
         // 检查环境
@@ -167,7 +168,7 @@ class Master
         // 创建worker进程
         self::createWorkers();
         // 输出信息
-        self::notice("Server start success ...", true);
+        self::notice("Workerman start success ...", true);
         // 标记sever状态为运行中...
         self::$serverStatus = self::STATUS_RUNNING;
         // 关闭标准输出
@@ -404,14 +405,20 @@ class Master
             // 查找worker文件
             if($worker_file = \Man\Core\Lib\Config::get($worker_name.'.worker_file'))
             {
-                include_once $worker_file;
                 $class_name = basename($worker_file, '.php');
             }
             else
             {
                 $class_name = $worker_name;
-                include_once WORKERMAN_ROOT_DIR . "workers/$worker_name.php";
+                $worker_file = WORKERMAN_ROOT_DIR . "workers/$worker_name.php";
             }
+            
+            // 如果有语法错误 sleep 5秒 避免狂刷日志
+            if(\Man\Core\Lib\Checker::checkSyntaxError($worker_file, $class_name))
+            {
+                sleep(5);
+            }
+            require_once $worker_file;
             
             // 创建实例
             $worker = new $class_name($worker_name);
@@ -473,7 +480,6 @@ class Master
         pcntl_signal(SIGINT, SIG_IGN);
         pcntl_signal(SIGUSR1, SIG_IGN);
         pcntl_signal(SIGHUP, SIG_IGN);
-        pcntl_signal(SIGCHLD, SIG_IGN);
     }
     
     /**
