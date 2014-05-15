@@ -1,5 +1,5 @@
 <?php
-require_once WORKERMAN_ROOT_DIR .'applications/Statistics/Web/_init.php';
+require_once  __DIR__.'/_init.php';
 
 $func = isset($_GET['fn']) ? $_GET['fn'] : 'main';
 $func = "\\Statistics\\Modules\\".$func;
