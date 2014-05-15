@@ -1,5 +1,4 @@
 <?php 
-require_once WORKERMAN_ROOT_DIR . 'man/Core/SocketWorker.php';
 /**
  * 
 * @author walkor <worker-man@qq.com>

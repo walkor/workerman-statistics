@@ -192,8 +192,9 @@ class Checker
             }
             else
             {
-                $worker_file = WORKERMAN_ROOT_DIR . "workers/$worker_name.php";
-                $class_name = $worker_name;
+                \Man\Core\Master::notice("$worker_name not set worker_file in conf/conf.d/$worker_name.conf");
+                echo"\033[31;40m [not set worker_file] \033[0m\n";
+                continue;
             }
             if(0 != self::checkSyntaxError($worker_file, $class_name))
             {
@@ -233,6 +234,7 @@ class Checker
         elseif($pid == 0)
         {
             ini_set('display_errors', 'Off');
+            require_once WORKERMAN_ROOT_DIR . 'Core/SocketWorker.php';
             // 载入对应worker
             require_once $file;
             if($class_name && !class_exists($class_name))
