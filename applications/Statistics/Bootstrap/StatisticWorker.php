@@ -237,7 +237,7 @@ class StatisticWorker extends Man\Core\SocketWorker
      * @param string $file
      * @param int $exp_time
      */
-    protected function clearDisk($file = null, $exp_time = 86400)
+    public function clearDisk($file = null, $exp_time = 86400)
     {
         $time_now = time();
         if(is_file($file))
