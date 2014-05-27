@@ -6,7 +6,7 @@ require_once WORKERMAN_ROOT_DIR . 'Core/SocketWorker.php';
  * 当文件更新后会给每个worker进程发送平滑重启信号
  * 做到文件更新自动加载到内存
  * 
-* @author walkor <worker-man@qq.com>
+* @author walkor <workerman.net>
  */
 class FileMonitor extends Man\Core\AbstractWorker
 {
@@ -159,7 +159,7 @@ class FileMonitor extends Man\Core\AbstractWorker
             // 日志
             $this->notice("terminal closed and restart worker");
             // worker重启时会检测终端是否关闭
-            $this->sendSignalToAllWorker(SIGHUP);
+            $this->sendSignalToAllWorker(SIGTTOU);
             // 设置标记
             $this->terminalClosed = true;
         }
