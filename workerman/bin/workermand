@@ -3,6 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
 ini_set('limit_memory','512M');
+ini_set('opcache.enable', false);
 date_default_timezone_set('Asia/Shanghai');
 
 if(empty($argv[1]))
@@ -87,11 +88,19 @@ if($cmd != 'status' && is_file(WORKERMAN_PID_FILE))
     }
 }
 
+// 必须是root启动
+if($user_info = posix_getpwuid(posix_getuid()))
+{
+    if($user_info['name'] !== 'root')
+    {
+        exit("\033[31;40mYou should ran Workerman as root , Permission denied\033[0m\n");
+    }
+}
+
 switch($cmd)
 {
     case 'start':
-        $worker_user = isset($argv[2]) ? $argv[2] : '';
-        Man\Core\Master::run($worker_user);
+        Man\Core\Master::run();
         break;
     case 'stop':
         $pid = @file_get_contents(WORKERMAN_PID_FILE);
@@ -103,7 +112,6 @@ switch($cmd)
         break;
     case 'restart':
         stop_and_wait();
-        $worker_user = isset($argv[2]) ? $argv[2] : '';
         Man\Core\Master::run();
         break;
     case 'reload':
