@@ -26,11 +26,11 @@ $web->count = 2;
 $web->addRoot('www.your_domain.com', __DIR__.'/Web');
 
 // recv udp broadcast
-$udp_finder = new Worker("Statistic://0.0.0.0:55858");
+$udp_finder = new Worker("Telnet://0.0.0.0:55858");
 $udp_finder->transport = 'udp';
 $udp_finder->onMessage = function ($connection, $data)
 {
-    var_dump($data);
+    $data = json_decode($data, true);
     if(empty($data))
     {
         return false;
