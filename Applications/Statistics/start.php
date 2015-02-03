@@ -27,6 +27,7 @@ $web->addRoot('www.your_domain.com', __DIR__.'/Web');
 
 // recv udp broadcast
 $udp_finder = new Worker("Text://0.0.0.0:55858");
+$web->name = 'StatisticFinder';
 $udp_finder->transport = 'udp';
 $udp_finder->onMessage = function ($connection, $data)
 {
