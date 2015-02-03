@@ -14,4 +14,4 @@ class Config
     public static $dataPath = '';
 }
 
-Config::$dataPath = __DIR__ . '../data/';
+Config::$dataPath = __DIR__ . '/../data/';
