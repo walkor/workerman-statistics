@@ -18,19 +18,19 @@
 以ubuntu为例
 
 启动  
-`sudo ./bin/workermand start`
+`php start.php start -d`
 
 重启启动  
-`sudo ./bin/workermand restart`
+`php start.php restart`
 
 平滑重启/重新加载配置  
-`sudo ./bin/workermand reload`
+`php start.php reload`
 
 查看服务状态  
-`sudo ./bin/workermand status`
+`php start.php status`
 
 停止  
-`sudo ./bin/workermand stop`
+`php start.php stop`
 
 权限验证
 =======
