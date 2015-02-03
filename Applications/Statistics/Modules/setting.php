@@ -21,11 +21,11 @@ function setting()
                break;
            }
             $suc_msg = "保存成功";
-            \Statistics\Config\Config::$ProviderPort = $detect_port;
+            \Statistics\Config::$ProviderPort = $detect_port;
             saveDetectPortToCache();
             break;
         default:
-            $detect_port = \Statistics\Config\Config::$ProviderPort;
+            $detect_port = \Statistics\Config::$ProviderPort;
     }
     
     include ST_ROOT . '/Views/header.tpl.php';
@@ -39,5 +39,5 @@ function saveDetectPortToCache()
     {
         unlink($php_file);
     }
-    file_put_contents(ST_ROOT . '/Config/Cache/'.time().'.detect_port.cache.php', "<?php\n\\Statistics\\Config\\Config::\$ProviderPort=".var_export(\Statistics\Config\Config::$ProviderPort,true).';');
+    file_put_contents(ST_ROOT . '/Config/Cache/'.time().'.detect_port.cache.php', "<?php\n\\Statistics\\Config::\$ProviderPort=".var_export(\Statistics\Config::$ProviderPort,true).';');
 }

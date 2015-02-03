@@ -141,7 +141,7 @@ function main($module, $interface, $date, $start_time, $offset)
         $err_msg = '<strong>无法从以下数据源获取数据:</strong>';
         foreach (\Statistics\Lib\Cache::$lastFailedIpArray as $ip)
         {
-            $err_msg .= $ip.'::'.\Statistics\Config\Config::$ProviderPort . '&nbsp;';
+            $err_msg .= $ip.'::'.\Statistics\Config::$ProviderPort . '&nbsp;';
         }
     }
     
@@ -164,7 +164,7 @@ function multiRequestStAndModules($module, $interface, $date)
     $buffer = json_encode(array('cmd'=>'get_statistic','module'=>$module, 'interface'=>$interface, 'date'=>$date))."\n";
     $ip_list = (!empty($_GET['ip']) && is_array($_GET['ip'])) ? $_GET['ip'] : \Statistics\Lib\Cache::$ServerIpList;
     $reqest_buffer_array = array();
-    $port = \Statistics\Config\Config::$ProviderPort;;
+    $port = \Statistics\Config::$ProviderPort;;
     foreach($ip_list as $ip)
     {
         $reqest_buffer_array["$ip:$port"] = $buffer;

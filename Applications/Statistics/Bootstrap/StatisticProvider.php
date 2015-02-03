@@ -69,6 +69,7 @@ class StatisticProvider extends Worker
      */
     public function __construct($socket_name)
     {
+        parent::__construct($socket_name);
         $this->onMessage = array($this, 'onMessage');
     }
     
@@ -110,7 +111,7 @@ class StatisticProvider extends Worker
      */
     public function getModules($current_module = '')
     {
-        $st_dir = Config::$dataPAth . $this->statisticDir;
+        $st_dir = Config::$dataPath . $this->statisticDir;
         $modules_name_array = array();
         foreach(glob($st_dir."/*", GLOB_ONLYDIR) as $module_file)
         {

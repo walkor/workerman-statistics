@@ -14,7 +14,7 @@ function admin()
             socket_set_option($socket, SOL_SOCKET, SO_BROADCAST, 1);
             $buffer = json_encode(array('cmd'=>'REPORT_IP'))."\n";
             // 广播
-            socket_sendto($socket, $buffer, strlen($buffer), 0, '255.255.255.255', \Statistics\Config\Config::$ProviderPort);
+            socket_sendto($socket, $buffer, strlen($buffer), 0, '255.255.255.255', \Statistics\Config::$ProviderPort);
             // 超时相关
             $time_start = microtime(true);
             $global_timeout = 1;

@@ -67,6 +67,7 @@ class StatisticWorker extends Worker
     
     public function __construct($socket_name)
     {
+        parent::__construct($socket_name);
         $this->onWorkerStart = array($this, 'onStart');
         $this->onMessage = array($this, 'onMessage');
     }
@@ -85,7 +86,7 @@ class StatisticWorker extends Worker
         $time = $data['time'];
         $code = $data['code'];
         $msg = str_replace("\n", "<br>", $data['msg']);
-        $ip = $this->getRemoteIp();
+        $ip = $connection->getRemoteIp();
         
         // 模块接口统计
         $this->collectStatistics($module, $interface, $cost_time, $success, $ip, $code, $msg);

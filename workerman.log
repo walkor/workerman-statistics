@@ -1,0 +1,64 @@
+2015-02-02 22:54:44 Workerman[start.php] start
+2015-02-02 22:55:24 Workerman[start.php] start
+2015-02-02 22:55:33 Workerman[start.php] Stopping ...
+2015-02-02 22:55:33 Workerman[start.php] has been stopped
+2015-02-02 22:56:35 Workerman[start.php] start
+2015-02-02 22:56:40 worker[WebServer:23567] exit with status 65280
+2015-02-02 22:56:42 Workerman[start.php] Stopping ...
+2015-02-02 22:56:42 Workerman[start.php] has been stopped
+2015-02-02 22:57:56 Workerman[start.php] start
+2015-02-02 22:58:30 worker[WebServer:23590] exit with status 65280
+2015-02-02 23:03:13 worker[WebServer:23652] exit with status 65280
+2015-02-02 23:05:23 worker[WebServer:23707] exit with status 65280
+2015-02-02 23:07:03 Workerman[start.php] status
+2015-02-02 23:08:37 Workerman[start.php] Stopping ...
+2015-02-02 23:08:37 Workerman[start.php] has been stopped
+2015-02-02 23:08:38 Workerman[start.php] start
+2015-02-03 20:31:08 Workerman[start.php] start
+2015-02-03 20:31:09 Workerman[start.php] Stopping ...
+2015-02-03 20:31:09 Workerman[start.php] has been stopped
+2015-02-03 20:31:44 Workerman[start.php] start
+2015-02-03 20:31:55 Workerman[start.php] Stopping ...
+2015-02-03 20:31:55 Workerman[start.php] has been stopped
+2015-02-03 20:32:31 Workerman[start.php] start
+2015-02-03 20:32:45 Workerman[start.php] Stopping ...
+2015-02-03 20:32:45 Workerman[start.php] has been stopped
+2015-02-03 20:36:05 Workerman[start.php] status
+2015-02-03 20:36:05 Workerman[start.php] not run
+2015-02-03 20:36:11 Workerman[start.php] start
+2015-02-03 20:36:18 worker[StatisticWorker:25516] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25520] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25521] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25522] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25523] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25524] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25525] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25526] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25527] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25528] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25529] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25530] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25531] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25532] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25533] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25534] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25535] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25536] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25537] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25538] exit with status 65280
+2015-02-03 20:36:18 worker[StatisticWorker:25539] exit with status 65280
+2015-02-03 20:36:20 Workerman[start.php] Stopping ...
+2015-02-03 20:36:20 Workerman[start.php] has been stopped
+2015-02-03 20:37:03 Workerman[start.php] start
+2015-02-03 20:37:07 worker[StatisticProvider:25543] exit with status 65280
+2015-02-03 20:37:09 Workerman[start.php] Stopping ...
+2015-02-03 20:37:09 Workerman[start.php] has been stopped
+2015-02-03 20:37:50 Workerman[start.php] start
+2015-02-03 20:39:17 Workerman[start.php] Stopping ...
+2015-02-03 20:39:17 Workerman[start.php] has been stopped
+2015-02-03 20:39:18 Workerman[start.php] start
+2015-02-03 20:39:37 Workerman[start.php] Stopping ...
+2015-02-03 20:39:37 Workerman[start.php] has been stopped
+2015-02-03 20:40:12 Workerman[start.php] start
+2015-02-03 20:40:58 Workerman[start.php] Stopping ...
+2015-02-03 20:40:58 Workerman[start.php] has been stopped

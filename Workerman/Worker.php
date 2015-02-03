@@ -959,6 +959,7 @@ class Worker
     public function __construct($socket_name = '', $context_option = array())
     {
         $this->workerId = spl_object_hash($this);
+        echo $this->workerId,"\n";
         self::$_workers[$this->workerId] = $this;
         self::$_pidMap[$this->workerId] = array();
         

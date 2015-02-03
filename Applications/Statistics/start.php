@@ -1,7 +1,8 @@
 <?php 
 require_once __DIR__ .'/Config/Config.php';
-require_once __DIR__.'Bootstrap/StatisticProvider.php';
-require_once __DIR__.'Bootstrap/StatisticWorker.php';
+require_once __DIR__.'/Protocols/Statistic.php';
+require_once __DIR__.'/Bootstrap/StatisticProvider.php';
+require_once __DIR__.'/Bootstrap/StatisticWorker.php';
 
 use Bootstrap\StatisticProvider;
 use Bootstrap\StatisticWorker;
@@ -29,8 +30,7 @@ $udp_finder = new Worker("Statistic://0.0.0.0:55858");
 $udp_finder->transport = 'udp';
 $udp_finder->onMessage = function ($connection, $data)
 {
-    // 发的包是json，解析json
-    $data = json_decode($data, true);
+    var_dump($data);
     if(empty($data))
     {
         return false;

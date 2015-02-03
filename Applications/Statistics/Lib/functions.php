@@ -87,7 +87,7 @@ function multiRequest($request_buffer_array)
 function check_auth()
 {
     // 如果配置中管理员用户名密码为空则说明不用验证
-    if(Statistics\Config\Config::$adminName == '' && Statistics\Config\Config::$adminPassword == '')
+    if(Statistics\Config::$adminName == '' && Statistics\Config::$adminPassword == '')
     {
         return true;
     }
@@ -104,7 +104,7 @@ function check_auth()
         {
             $admin_name = $_POST['admin_name'];
             $admin_password = $_POST['admin_password'];
-            if($admin_name != Statistics\Config\Config::$adminName || $admin_password != Statistics\Config\Config::$adminPassword)
+            if($admin_name != Statistics\Config::$adminName || $admin_password != Statistics\Config::$adminPassword)
             {
                 $msg = "用户名或者密码不正确";
                 include ST_ROOT . '/Views/login.tpl.php';
