@@ -71,6 +71,27 @@ class StatisticProvider extends Worker
     {
         parent::__construct($socket_name);
         $this->onMessage = array($this, 'onMessage');
+        
+        // recv udp broadcast
+        $udp_finder = new Worker("Text://0.0.0.0:55858");
+        $udp_finder->transport = 'udp';
+        $udp_finder->onMessage = function ($connection, $data)
+        {
+            $data = json_decode($data, true);
+            if(empty($data))
+            {
+                return false;
+            }
+        
+            // 无法解析的包
+            if(empty($data['cmd']) || $data['cmd'] != 'REPORT_IP' )
+            {
+                return false;
+            }
+        
+            // response
+            return $connection->send(json_encode(array('result'=>'ok')));
+        };
     }
     
     /**

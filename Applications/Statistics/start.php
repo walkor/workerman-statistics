@@ -10,7 +10,7 @@ use \Workerman\Worker;
 use \Workerman\WebServer;
 
 // StatisticProvider
-$statistic_provider = new StatisticProvider("Telnet://0.0.0.0:55858");
+$statistic_provider = new StatisticProvider("Text://0.0.0.0:55858");
 $statistic_provider->name = 'StatisticProvider';
 
 
@@ -22,26 +22,5 @@ $statistic_worker->name = 'StatisticWorker';
 
 // WebServer
 $web = new WebServer("http://0.0.0.0:55757");
-$web->count = 2;
+$web->name = 'StatisticWeb';
 $web->addRoot('www.your_domain.com', __DIR__.'/Web');
-
-// recv udp broadcast
-$udp_finder = new Worker("Telnet://0.0.0.0:55858");
-$udp_finder->transport = 'udp';
-$udp_finder->onMessage = function ($connection, $data)
-{
-    $data = json_decode($data, true);
-    if(empty($data))
-    {
-        return false;
-    }
-    
-    // 无法解析的包
-    if(empty($data['cmd']) || $data['cmd'] != 'REPORT_IP' )
-    {
-        return false;
-    }
-    
-    // response 
-    return $connection->send(json_encode(array('result'=>'ok')));
-};
