@@ -397,15 +397,6 @@ class TcpConnection extends ConnectionInterface
            $this->destroy();
         }
     }
-    
-    /**
-     * get socket
-     * @return resource
-     */
-    public function getSocket()
-    {
-        return $this->_socket;
-    }
 
     /**
      * destroy the connection
