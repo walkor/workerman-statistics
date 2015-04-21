@@ -47,7 +47,7 @@ function getStasticLog($module, $interface , $start_time, $offset = '', $count =
     foreach($ip_list as $key=>$ip)
     {
         $offset = isset($offset_list[$key]) ? $offset_list[$key] : 0;
-        $request_buffer_array["$ip:$port"] = json_encode(array('cmd'=>'get_log', 'module'=>$module, 'interface'=>$interface, 'start_time'=>$start_time,  'offset'=>$offset, 'count'=>$count));
+        $request_buffer_array["$ip:$port"] = json_encode(array('cmd'=>'get_log', 'module'=>$module, 'interface'=>$interface, 'start_time'=>$start_time,  'offset'=>$offset, 'count'=>$count))."\n";
     }
 
     $read_buffer_array = multiRequest($request_buffer_array);
