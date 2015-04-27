@@ -4,6 +4,10 @@
 需要PHP版本不低于5.3，只需要安装PHP的Cli即可，无需安装PHP-FPM、nginx、apache
 不能运行在Window平台
 
+示例
+========
+[Live Demo](http://monitor.workerman.net/)
+
 安装
 =========
 
