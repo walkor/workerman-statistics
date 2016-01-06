@@ -1,0 +1,2 @@
+php Applications\Statistics\start_web.php Applications\Statistics\start_worker.php Applications\Statistics\start_provider.php Applications\Statistics\start_finder.php
+pause
