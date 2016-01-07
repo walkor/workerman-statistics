@@ -12,7 +12,7 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-if(class_exists('Workerman\Autoloader'))
+if(!class_exists('Workerman\Autoloader'))
 {
     require_once __DIR__ . '/../../Workerman/Autoloader.php';
 }
