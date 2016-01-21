@@ -82,6 +82,7 @@ class StatisticWorker extends Worker
         parent::__construct($socket_name);
         $this->onWorkerStart = array($this, 'onStart');
         $this->onMessage = array($this, 'onMessage');
+        $this->onWorkerStop = array($this, 'onStop');
     }
     
     /**
