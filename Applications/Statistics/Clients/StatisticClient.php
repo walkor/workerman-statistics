@@ -62,7 +62,7 @@ class StatisticClient
             $time_start = microtime(true);
         }
          
-        $cost_time = bcsub(microtime(true), $time_start, 4);
+        $cost_time = microtime(true) - $time_start;
         
         $bin_data = StatisticProtocol::encode($module, $interface, $cost_time, $success, $code, $msg);
         
