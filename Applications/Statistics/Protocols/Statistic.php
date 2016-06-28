@@ -84,7 +84,7 @@ class Statistic
     {
         $module = $data['module'];
         $interface = $data['interface'];
-        $cost_time = $data['$cost_time'];
+        $cost_time = $data['cost_time'];
         $success = $data['success'];
         $code = isset($data['code']) ? $data['code'] : 0;
         $msg = isset($data['msg']) ? $data['msg'] : '';
