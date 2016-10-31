@@ -12,10 +12,8 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-if(!class_exists('Workerman\Autoloader'))
-{
-    require_once __DIR__ . '/../../Workerman/Autoloader.php';
-}
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 require_once __DIR__ .'/Config/Config.php';
 require_once __DIR__.'/Protocols/Statistic.php';
 require_once __DIR__.'/Bootstrap/StatisticProvider.php';
