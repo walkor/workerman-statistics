@@ -10,11 +10,9 @@
 
 安装
 =========
+1、下载 或者 ```git clone https://github.com/walkor/workerman-statistics```
 
-以ubuntu为例
-
-安装PHP Cli  
-`sudo apt-get install php5-cli`
+2、命令行运行 ```composer install```
 
 启动停止
 =========
