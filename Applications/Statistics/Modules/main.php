@@ -95,10 +95,10 @@ function main($module, $interface, $date, $start_time, $offset)
             if($first_line)
             {
                 $first_line = false;
-                if($item['total_count'] == 0)
-                {
-                    continue;
-                }
+            }
+            if($item['total_count'] == 0)
+            {
+                continue;
             }
             $html_class = 'class="danger"';
             if($item['total_count'] == 0)
