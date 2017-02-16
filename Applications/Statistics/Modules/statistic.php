@@ -74,37 +74,58 @@ function statistic($module, $interface, $date, $start_time, $offset)
             {
                 $first_line = false;
             }
-            if($item['total_count'] == 0)
-            {
-                continue;
-            }
             $html_class = 'class="danger"';
             if($item['total_count'] == 0)
             {
                 $html_class = '';
+                $total_count_zero_start = true;
+                if (empty($zero_time_start)) $zero_time_start = $item['time'];
+                continue;
             }
-            elseif($item['precent']>=99.99)
+            else
             {
-                $html_class = 'class="success"';
+                if ($total_count_zero_start) {
+                    $zero_time_end = $item['time'];
+                    $zero_time_combine = $zero_time_start . ' ~ ' . $zero_time_end;
+                    $total_count_zero_start = false;
+                    $zero_time_start = $zero_time_end = '';
+                    $table_data .= "\n<tr>
+                       <td>{$zero_time_combine}</td>
+                       <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0%</td>
+                    </tr>
+            ";
+                }
+
+                if($item['precent']>=99.99)
+                {
+                    $html_class = 'class="success"';
+                }
+                elseif($item['precent']>=99)
+                {
+                    $html_class = '';
+                }
+                elseif($item['precent']>=98)
+                {
+                    $html_class = 'class="warning"';
+                }
             }
-            elseif($item['precent']>=99)
-            {
-                $html_class = '';
-            }
-            elseif($item['precent']>=98)
-            {
-                $html_class = 'class="warning"';
-            }
+
             $table_data .= "\n<tr $html_class>
-            <td>{$item['time']}</td>
-            <td>{$item['total_count']}</td>
-            <td> {$item['total_avg_time']}</td>
-            <td>{$item['suc_count']}</td>
-            <td>{$item['suc_avg_time']}</td>
-            <td>".($item['fail_count']>0?("<a href='/?fn=logger&$query&start_time=".(strtotime($item['time'])-300)."&end_time=".(strtotime($item['time']))."'>{$item['fail_count']}</a>"):$item['fail_count'])."</td>
-            <td>{$item['fail_avg_time']}</td>
-            <td>{$item['precent']}%</td>
-            </tr>
+                       <td>{$item['time']}</td>
+                       <td>{$item['total_count']}</td>
+                        <td> {$item['total_avg_time']}</td>
+                        <td>{$item['suc_count']}</td>
+                        <td>{$item['suc_avg_time']}</td>
+                        <td>".($item['fail_count']>0?("<a href='/?fn=logger&$query&start_time=".(strtotime($item['time'])-300)."&end_time=".(strtotime($item['time']))."'>{$item['fail_count']}</a>"):$item['fail_count'])."</td>
+                        <td>{$item['fail_avg_time']}</td>
+                        <td>{$item['precent']}%</td>
+                    </tr>
             ";
         }
         }
