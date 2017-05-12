@@ -172,7 +172,7 @@ EOT;
 
 function multiRequestStAndModules($module, $interface, $date)
 {
-    \Statistics\Lib\Cache::$statisticDataCache['statistic'] = '';
+    \Statistics\Lib\Cache::$statisticDataCache['statistic'] = array();
     $buffer = json_encode(array('cmd'=>'get_statistic','module'=>$module, 'interface'=>$interface, 'date'=>$date))."\n";
     $ip_list = (!empty($_GET['ip']) && is_array($_GET['ip'])) ? $_GET['ip'] : \Statistics\Lib\Cache::$ServerIpList;
     $reqest_buffer_array = array();
