@@ -24,7 +24,7 @@ class StatisticProvider extends Worker
      *  最大日志buffer，大于这个值就写磁盘
      * @var integer
      */
-    const MAX_LOG_BUFFER_SZIE = 1024000;
+    const MAX_LOG_BUFFER_SIZE = 1024000;
     
     /**
      * 多长时间写一次数据到磁盘
