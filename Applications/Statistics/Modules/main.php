@@ -86,7 +86,7 @@ function main($module, $interface, $date, $start_time, $offset)
         }
     }
     
-    $table_data = '';
+    $table_data = $html_class = '';
     if($data)
     {
         $first_line = true;
