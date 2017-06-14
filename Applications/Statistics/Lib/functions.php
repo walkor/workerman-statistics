@@ -133,7 +133,7 @@ function check_auth()
  */
 function _session_start()
 {
-    if(class_exists('\Workerman\Worker'))
+    if(PHP_SAPI === 'cli')
     {
         return Http::sessionStart();
     }
@@ -146,7 +146,7 @@ function _session_start()
  */
 function _exit($str = '')
 {
-    if(class_exists('\Workerman\Worker'))
+    if(PHP_SAPI === 'cli')
     {
         return Http::end($str);
     }
