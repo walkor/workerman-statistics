@@ -18,10 +18,10 @@ class Config
     public static $ProviderPort = 55858;
     
     // 管理员用户名，用户名密码都为空字符串时说明不用验证
-    public static $adminName = '';
+    public static $adminName = 'chenzhaozheng';
     
     // 管理员密码，用户名密码都为空字符串时说明不用验证
-    public static $adminPassword = '';
+    public static $adminPassword = '1767421';
     
     public static $dataPath = '';
 }
