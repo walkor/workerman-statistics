@@ -276,7 +276,7 @@ function formatSt($str, $date, &$code_map)
             'suc_avg_time'  => 0,
             'fail_count'    => 0,
             'fail_avg_time' => 0,
-            'precent'       => 100,
+            'precent'       => 0,
         );
         $time_point +=300;
     }
